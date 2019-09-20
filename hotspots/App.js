@@ -1,19 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import SearchScreen from "./src/screens/SearchScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+/*
+ * All screens should be stored in ./src/screens and imported at the top of this file.
+ * They also need to be added into the navigator below in the form of a key/value pair. 
+ */
+const navigator = createStackNavigator(
+  {
+    Search: SearchScreen
   },
-});
+  {
+    initialRouteName: "Search",
+    defaultNavigationOptions: {
+      title: "Business Search"
+    }
+  }
+);
+
+export default createAppContainer(navigator);
