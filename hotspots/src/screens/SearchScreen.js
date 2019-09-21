@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import SearchBar from "../components/SearchBar";
+import yelp from "../api/yelp";
 
 const SearchScreen = function() {
   /*
@@ -10,15 +11,34 @@ const SearchScreen = function() {
    * which allows us to pass through user input wherever we need within the project.
    */
   const [term, setTerm] = useState("");
+  // This is another piece of state which is used to store GET requests from the Yelp API.
+  const [businesses, setBusinesses] = useState([]);
+  /*
+   * This is an async/await pattern which requests data using GET
+   * and assigns the data sent back to us in const response.
+   * Notice the async and await declarations prepended to the functions.
+   */
+  const searchApi = async function() {
+    const response = await yelp.get("/search", {
+      params: {
+        limit: 50,
+        term,
+        location: "chico"
+      }
+    });
+    // Businesses state is updated using the setBusinesses function.
+    setBusinesses(response.data.businesses);
+  };
 
   return (
     <View>
       <SearchBar
         term={term}
-        onTermChange={newTerm => setTerm(newTerm)}
-        onTermSubmit={() => console.log("term was submitted")}
+        onTermChange={setTerm}
+        onTermSubmit={searchApi}
       />
       <Text>Search Screen</Text>
+      <Text>We have found {businesses.length} results</Text>
     </View>
   );
 };
