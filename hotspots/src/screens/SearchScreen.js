@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import SearchBar from "../components/SearchBar";
-import useBusinesses from "../hooks/useBusinesses"
+import useBusinesses from "../hooks/useBusinesses";
+import BusinessesList from "../components/BusinessesList";
 
 const SearchScreen = function() {
   /*
@@ -12,6 +13,13 @@ const SearchScreen = function() {
    */
   const [term, setTerm] = useState("");
   const [searchApi, businesses, errorMessage] = useBusinesses();
+
+  const filterBusinessesByPrice = function(price) {
+    // price === "$" || "$$" || "$$$"
+    return businesses.filter(function(business) {
+      return business.price === price;
+    });
+  };
 
   return (
     <View>
@@ -24,6 +32,18 @@ const SearchScreen = function() {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {businesses.length} results</Text>
+      <BusinessesList
+        businesses={filterBusinessesByPrice("$")}
+        title="Cost Effective"
+      />
+      <BusinessesList
+        businesses={filterBusinessesByPrice("$$")}
+        title="Bit Pricier"
+      />
+      <BusinessesList
+        businesess={filterBusinessesByPrice("$$$")}
+        title="Big Spender"
+      />
     </View>
   );
 };
