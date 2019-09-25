@@ -12,7 +12,9 @@ const SearchBar = function({ term, onTermChange, onTermSubmit }) {
         style={styles.inputStyle}
         placeholder="Search"
         value={term}
+        // Calls a function whenever the text input's text changes.
         onChangeText={onTermChange}
+        // Calls a function whenever a user taps on the submit button.
         onEndEditing={onTermSubmit}
       />
     </View>
