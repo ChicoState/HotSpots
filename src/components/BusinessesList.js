@@ -8,6 +8,7 @@ const BusinessesList = function({ title, businesses }) {
       <Text style={styles.titleStyle}>{title}</Text>
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         data={businesses}
         keyExtractor={business => business.id}
         renderItem={function({ item }) {

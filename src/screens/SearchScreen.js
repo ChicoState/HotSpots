@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useBusinesses from "../hooks/useBusinesses";
 import BusinessesList from "../components/BusinessesList";
@@ -32,18 +32,20 @@ const SearchScreen = function() {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {businesses.length} results</Text>
-      <BusinessesList
-        businesses={filterBusinessesByPrice("$")}
-        title="Cost Effective"
-      />
-      <BusinessesList
-        businesses={filterBusinessesByPrice("$$")}
-        title="Bit Pricier"
-      />
-      <BusinessesList
-        businesess={filterBusinessesByPrice("$$$")}
-        title="Big Spender"
-      />
+      <ScrollView>
+        <BusinessesList
+          businesses={filterBusinessesByPrice("$")}
+          title="Cost Effective"
+        />
+        <BusinessesList
+          businesses={filterBusinessesByPrice("$$")}
+          title="Bit Pricier"
+        />
+        <BusinessesList
+          businesess={filterBusinessesByPrice("$$$")}
+          title="Big Spender"
+        />
+      </ScrollView>
     </View>
   );
 };
