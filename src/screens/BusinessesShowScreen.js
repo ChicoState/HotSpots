@@ -5,13 +5,11 @@ import yelp from "../api/yelp";
 const BusinessesShowScreen = function({ navigation }) {
   const [business, setBusiness] = useState(null);
   const id = navigation.getParam("id");
-  console.log(id);
 
   const getBusiness = async function(id) {
     const response = await yelp.get(`/${id}`);
     setBusiness(response.data);
   };
-  console.log(business);
 
   useEffect(function() {
     getBusiness(id);
@@ -26,7 +24,7 @@ const BusinessesShowScreen = function({ navigation }) {
       <Text>{business.name}</Text>
       <FlatList
         data={business.photos}
-        keyExtractor={(photo) => photo}
+        keyExtractor={photo => photo}
         renderItem={({ item }) => {
           return <Image style={styles.imageStyle} source={{ uri: item }} />;
         }}
