@@ -15,14 +15,15 @@ const SearchScreen = function() {
   const [searchApi, businesses, errorMessage] = useBusinesses();
 
   const filterBusinessesByPrice = function(price) {
-    // price === "$" || "$$" || "$$$"
+    // price === "$" || "$$" || "$$$" || "$$$$"
     return businesses.filter(function(business) {
       return business.price === price;
     });
   };
 
   return (
-    <View>
+    // {flex: 1} constrains the View component so that it doesn't render anything out of view of the screen.
+    <View style={{ flex: 1 }}>
       <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -31,19 +32,22 @@ const SearchScreen = function() {
         }}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {businesses.length} results</Text>
       <ScrollView>
         <BusinessesList
           businesses={filterBusinessesByPrice("$")}
-          title="Cost Effective"
+          title="$"
         />
         <BusinessesList
           businesses={filterBusinessesByPrice("$$")}
-          title="Bit Pricier"
+          title="$$"
         />
         <BusinessesList
-          businesess={filterBusinessesByPrice("$$$")}
-          title="Big Spender"
+          businesses={filterBusinessesByPrice("$$$")}
+          title="$$$"
+        />
+        <BusinessesList
+          businesses={filterBusinessesByPrice("$$$$")}
+          title="$$$$"
         />
       </ScrollView>
     </View>
