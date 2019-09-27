@@ -1,8 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity
+} from "react-native";
+import { withNavigation } from "react-navigation";
 import BusinessesDetail from "./BusinessesDetail";
 
-const BusinessesList = function({ title, businesses }) {
+const BusinessesList = function({ title, businesses, navigation }) {
+  if (!businesses.length) {
+    return null;
+  }
+
   return (
     <View style={styles.containerStyle}>
       <Text style={styles.titleStyle}>{title}</Text>
@@ -11,8 +22,16 @@ const BusinessesList = function({ title, businesses }) {
         showsHorizontalScrollIndicator={false}
         data={businesses}
         keyExtractor={business => business.id}
-        renderItem={function({ item }) {
-          return <BusinessesDetail business={item} />;
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("BusinessesShow", { id: item.id })
+              }
+            >
+              <BusinessesDetail business={item} />
+            </TouchableOpacity>
+          );
         }}
       />
     </View>
@@ -31,4 +50,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default BusinessesList;
+export default withNavigation(BusinessesList);
