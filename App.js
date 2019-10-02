@@ -1,5 +1,11 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import {
+  createSwitchNavigtor,
+  createStackNavigator
+} from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { useScreens } from "react-native-screens";
+useScreens();
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 
@@ -7,7 +13,8 @@ import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
  * All screens should be stored in ./src/screens and imported at the top of this file.
  * They also need to be added into the navigator below in the form of a key/value pair.
  */
-const navigator = createStackNavigator(
+
+const searchStack = createStackNavigator(
   {
     Search: SearchScreen,
     BusinessesShow: BusinessesShowScreen
@@ -20,4 +27,14 @@ const navigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(navigator);
+const tabNavigator = createBottomTabNavigator(
+  {
+    //Home: HomeStack
+    Search: searchStack
+    //Deals: DealsStack
+    //Events: EventsStack
+  },
+  { initialRouteName: "Search" }
+);
+
+export default createAppContainer(tabNavigator);
