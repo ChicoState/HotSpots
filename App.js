@@ -19,6 +19,18 @@ const searchStack = createStackNavigator(
   {
     Search: SearchScreen,
     BusinessesShow: BusinessesShowScreen,
+    // Map: MapScreen
+  },
+  {
+    initialRouteName: "Search",
+    defaultNavigationOptions: {
+      title: "HotSpots"
+    }
+  }
+);
+
+const MapStack = createStackNavigator(
+  {
     Map: MapScreen
   },
   {
@@ -32,9 +44,10 @@ const searchStack = createStackNavigator(
 const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
-    Search: searchStack
+    Search: searchStack,
     //Deals: DealsStack
     //Events: EventsStack
+    Map: MapStack
   },
   { initialRouteName: "Search" }
 );

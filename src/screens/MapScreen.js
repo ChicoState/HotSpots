@@ -41,6 +41,9 @@ export default class MapApp extends Component {
     }
 
     componentDidMount() {
+        //watch position will constantly check for changes in position
+        //getcurrentposition only returns the current one and is only fired once
+
         this.watchId = navigator.geolocation.watchPosition(
             (position) => {
              this.setState({
@@ -61,6 +64,7 @@ export default class MapApp extends Component {
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA
     });
+    
 
     render() {
         let myCoordinate = { latitude: this.state.latitude, longitude: this.state.longitude }
