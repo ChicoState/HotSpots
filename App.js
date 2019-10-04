@@ -8,6 +8,7 @@ import { useScreens } from "react-native-screens";
 useScreens();
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
+import MapScreen from "./src/screens/MapScreen";
 
 /*
  * All screens should be stored in ./src/screens and imported at the top of this file.
@@ -17,12 +18,25 @@ import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 const searchStack = createStackNavigator(
   {
     Search: SearchScreen,
-    BusinessesShow: BusinessesShowScreen
+    BusinessesShow: BusinessesShowScreen,
+    // Map: MapScreen
   },
   {
     initialRouteName: "Search",
     defaultNavigationOptions: {
-      title: "Business Search"
+      title: "HotSpots"
+    }
+  }
+);
+
+const MapStack = createStackNavigator(
+  {
+    Map: MapScreen
+  },
+  {
+    initialRouteName: "Map",
+    defaultNavigationOptions: {
+      title: "Map View"
     }
   }
 );
@@ -30,9 +44,10 @@ const searchStack = createStackNavigator(
 const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
-    Search: searchStack
+    Search: searchStack,
     //Deals: DealsStack
     //Events: EventsStack
+    Map: MapStack
   },
   { initialRouteName: "Search" }
 );
