@@ -17,7 +17,6 @@ export default function() {
         params: {
           limit: 50,
           term: searchTerm,
-          location: "chico"
         }
       });
       // Businesses state is updated using the setBusinesses function.
