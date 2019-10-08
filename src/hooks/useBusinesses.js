@@ -16,7 +16,7 @@ export default function() {
       const response = await yelp.get("/search", {
         params: {
           limit: 50,
-          term: searchTerm,
+          term: searchTerm
         }
       });
       // Businesses state is updated using the setBusinesses function.
