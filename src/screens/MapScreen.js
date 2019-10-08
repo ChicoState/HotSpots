@@ -6,7 +6,6 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 //you need to install this to npm to compile 
 //npm install react-native-maps --save-exact
-//yarn add react-native-maps -E
 
 // const MapScreen = function() {
 //     return <View>
