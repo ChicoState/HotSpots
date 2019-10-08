@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useBusinesses from "../hooks/useBusinesses";
 import BusinessesList from "../components/BusinessesList";
-import useEvents from "../hooks/useEvents";
+//import useEvents from "../hooks/useEvents";
 
 const SearchScreen = function() {
   /*
@@ -15,7 +15,7 @@ const SearchScreen = function() {
   const [term, setTerm] = useState("");
   const [searchApi, businesses, errorMessage] = useBusinesses();
   //Debug Code
-  const [eventApi, events, setEvents] = useEvents();
+  //const [eventsApi, events, setEvents] = useEvents();
   const filterBusinessesByPrice = function(price) {
     // price === "$" || "$$" || "$$$" || "$$$$"
     return businesses.filter(function(business) {
@@ -24,7 +24,7 @@ const SearchScreen = function() {
   };
 
   //Debug Function
-  eventApi("Borgore");
+  //eventsApi("Borgore");
 
   return (
     // {flex: 1} constrains the View component so that it doesn't render anything out of view of the screen.

@@ -5,15 +5,20 @@ export default () => {
   const [events, setEvents] = useState([]);
 
   //Function to make request
-  const eventApi = searchTerm => {
+  const eventsApi = async searchTerm => {
     //searchTerm === "Event to search for: string"
-    const response = ticketMaster.get("/events", {
-      params: {
-        keyword: searchTerm
-      }
-    });
-    console.log(response);
+    try {
+      const response = await ticketMaster.get("events.json", {
+        params: {
+          keyword: searchTerm
+        }
+      });
+      //setEvents(response.data.)
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  return [eventApi, events, setEvents];
+  return [eventsApi, events, setEvents];
 };
