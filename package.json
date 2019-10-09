@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "expo": "^35.0.0",
+    "firebase": "^7.1.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
@@ -30,5 +31,18 @@
     "eslint-plugin-react": "^7.15.1",
     "prettier": "1.18.2"
   },
-  "private": true
+  "private": true,
+  "name": "hotspots",
+  "description": "[![Build Status](https://travis-ci.org/ChicoState/HotSpots.svg?branch=master)](https://travis-ci.org/ChicoState/HotSpots)",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsage1/HotSpots.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsage1/HotSpots/issues"
+  },
+  "homepage": "https://github.com/jsage1/HotSpots#readme"
 }
