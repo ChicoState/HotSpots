@@ -25,7 +25,11 @@ const SearchStack = createStackNavigator(
   {
     initialRouteName: "Search",
     defaultNavigationOptions: {
-      title: "HotSpots"
+      title: "HotSpots",
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: "center"
+      }
     }
   }
 );
