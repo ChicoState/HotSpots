@@ -3,14 +3,17 @@ import ticketMaster from "../api/ticketMaster";
 
 export default () => {
   const [events, setEvents] = useState([]);
+  const apiKey = "dxiyvALL8mwvOHP3o50IbBfIn28jGMe6";
 
   //Function to make request
   const eventsApi = async searchTerm => {
     //searchTerm === "Event to search for: string"
     try {
+      console.log(searchTerm)
       const response = await ticketMaster.get("events.json", {
         params: {
-          keyword: searchTerm
+          keyword: searchTerm,
+          apikey: apiKey
         }
       });
       //setEvents(response.data.)
