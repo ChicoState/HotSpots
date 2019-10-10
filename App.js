@@ -8,7 +8,7 @@ import { useScreens } from "react-native-screens";
 useScreens();
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
-import EventsScreen from "./src/screens/EventsScreen";
+import EventsScreen from "./src/screens/EventsResultsScreen";
 import MapScreen from "./src/screens/MapScreen";
 
 /*
@@ -36,7 +36,7 @@ const SearchStack = createStackNavigator(
 
 const EventsStack = createStackNavigator(
   {
-    Events: EventsScreen
+    Events: EventsResultsScreen
   },
   {
     initialRouteName: "Events",
