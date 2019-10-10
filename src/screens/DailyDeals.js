@@ -36,29 +36,41 @@ console.warn = message => {
     }
       
     var db = firebase.firestore();
-      
-    const [deals, setdeals] = useState([]);
 
+    let deals = [];
 
     db.collection("DailyDeals").get().then((snapshot) =>{
+        
         snapshot.docs.forEach( doc =>{
-          console.log(doc.data())
-         setdeals(doc.data.Buisness_Name)
-        })
-      })
+
+          //doc.id is the collection id and should be key
+          //console.log(doc.id)
+          deals.push({
+            key: doc.id
+            //business_name: doc.data().business_name
+          });
+        });
+        console.log(deals)
+      });
 
 
-    return( 
-            //flatlist requires data and render item
-            <FlatList 
-            //lays out text horizontally
-            //showsHorizontalScrollIndicator = {false}
-            //horizontal = {true}
-            //another way to fix entire key problem without modifying data;
-            //keyExtractor={(deals) => deals.id}
-            data = {deals} 
+    return(
+        //<Text>hello from deals screen</Text> 
+                    //flatlist requires data and render item
+        <FlatList 
+                  //lays out text horizontally
+                  //showsHorizontalScrollIndicator = {false}
+                  //horizontal = {true}
+                  //another way to fix entire key problem without modifying data;
+                  
+                  //<Text>{item.business_name}</Text></FlatList>
+            data = {deals}
+            keyExtractor={(deals) => deals.key} 
             renderItem = {({item}) =>{
-                    return<Text style = {styles.textStyle}> {item.Buisness_Name}</Text>
+                   return<View style = {styles.textStyle}>
+                     <Text>{item.key}</Text>
+                     
+                     </View>
             }}
         />
         );
