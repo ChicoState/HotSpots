@@ -8,7 +8,8 @@ import { useScreens } from "react-native-screens";
 useScreens();
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
-import EventsScreen from "./src/screens/EventsResultsScreen";
+import EventsResultsScreen from "./src/screens/EventsResultsScreen";
+import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
 
 /*
@@ -34,14 +35,19 @@ const SearchStack = createStackNavigator(
   }
 );
 
-const EventsStack = createStackNavigator(
+const EventsSearchStack = createStackNavigator(
   {
-    Events: EventsResultsScreen
+    EventsSearch: EventsSearchScreen,
+    EventsResults: EventsResultsScreen
   },
   {
-    initialRouteName: "Events",
+    initialRouteName: "EventsSearch",
     defaultNavigationOptions: {
-      title: "Events"
+      title: "Events",
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: "center"
+      }
     }
   }
 );
@@ -63,10 +69,10 @@ const tabNavigator = createBottomTabNavigator(
     //Home: HomeStack
     Search: SearchStack,
     //Deals: DealsStack
-    Events: EventsStack,
+    EventsSearch: EventsSearchStack,
     Map: MapStack
   },
-  { initialRouteName: "Search" }
+  { initialRouteName: "EventsSearch" }
 );
 
 export default createAppContainer(tabNavigator);
