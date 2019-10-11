@@ -8,23 +8,31 @@ import { useScreens } from "react-native-screens";
 useScreens();
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
+import EventsScreen from "./src/screens/EventsScreen";
 import MapScreen from "./src/screens/MapScreen";
+import DealsScreen from "./src/screens/DealsScreen";
 
-/*
- * All screens should be stored in ./src/screens and imported at the top of this file.
- * They also need to be added into the navigator below in the form of a key/value pair.
- */
-
-const searchStack = createStackNavigator(
+const SearchStack = createStackNavigator(
   {
     Search: SearchScreen,
-    BusinessesShow: BusinessesShowScreen,
-    // Map: MapScreen
+    BusinessesShow: BusinessesShowScreen
   },
   {
     initialRouteName: "Search",
     defaultNavigationOptions: {
       title: "HotSpots"
+    }
+  }
+);
+
+const EventsStack = createStackNavigator(
+  {
+    Events: EventsScreen
+  },
+  {
+    initialRouteName: "Events",
+    defaultNavigationOptions: {
+      title: "Events"
     }
   }
 );
@@ -41,12 +49,25 @@ const MapStack = createStackNavigator(
   }
 );
 
+const DealsStack = createStackNavigator(
+  {
+    Deals: DealsScreen
+    // Map: MapScreen
+  },
+  {
+    initialRouteName: "Deals",
+    defaultNavigationOptions: {
+      title: "Daily Deals"
+    }
+  }
+);
+
 const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
-    Search: searchStack,
-    //Deals: DealsStack
-    //Events: EventsStack
+    Search: SearchStack,
+    Events: EventsStack,
+    Deals: DealsStack,
     Map: MapStack
   },
   { initialRouteName: "Search" }
