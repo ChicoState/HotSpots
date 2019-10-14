@@ -11,17 +11,12 @@ import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 import EventsResultsScreen from "./src/screens/EventsResultsScreen";
 import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
-
-/*
- * All screens should be stored in ./src/screens and imported at the top of this file.
- * They also need to be added into the navigator below in the form of a key/value pair.
- */
+import DealsScreen from "./src/screens/DealsScreen";
 
 const SearchStack = createStackNavigator(
   {
     Search: SearchScreen,
     BusinessesShow: BusinessesShowScreen
-    // Map: MapScreen
   },
   {
     initialRouteName: "Search",
@@ -64,12 +59,25 @@ const MapStack = createStackNavigator(
   }
 );
 
+const DealsStack = createStackNavigator(
+  {
+    Deals: DealsScreen
+    // Map: MapScreen
+  },
+  {
+    initialRouteName: "Deals",
+    defaultNavigationOptions: {
+      title: "Daily Deals"
+    }
+  }
+);
+
 const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
     Search: SearchStack,
-    //Deals: DealsStack
     EventsSearch: EventsSearchStack,
+    Deals: DealsStack,
     Map: MapStack
   },
   { initialRouteName: "EventsSearch" }
