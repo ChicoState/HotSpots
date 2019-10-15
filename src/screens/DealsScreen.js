@@ -48,10 +48,8 @@ const DealsScreen = function() {
     let d = new Date();
     let dayName = days[d.getDay()];
     let dailyDeals = [];
-    let dealsRef = firebase
-      .firestore()
-      .db.collection("DailyDeals")
-      .where("day", "==", dayName);
+    let db = firebase.firestore();
+    let dealsRef = db.collection("DailyDeals").where("day", "==", dayName);
     dealsRef.get().then(snapshot => {
       snapshot.docs.forEach(doc => {
         dailyDeals.push({
