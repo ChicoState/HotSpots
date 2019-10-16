@@ -28,47 +28,45 @@ const DealsScreen = function() {
 
   // Initialize Cloud Firestore through Firebase
   try {
-    firebase.initializeApp(firebaseConfig);
+    !firebase.apps.length
+      ? firebase.initializeApp(firebaseConfig)
+      : firebase.app();
   } catch (err) {
     console.log(err);
   }
 
-  let db = firebase.firestore();
-
-  let dailyDeals = [];
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  let d = new Date();
-  let dayName = days[d.getDay()];
-
-  let dealsRef = db.collection("DailyDeals").where("day", "==", dayName);
-
-  dealsRef.get().then(snapshot => {
-    snapshot.docs.forEach(doc => {
-      dailyDeals.push({
-        key: doc.id,
-        business_name: doc.data().business_name,
-        business_type: doc.data().business_type,
-        deal_description: doc.data().deal_description,
-        special_name: doc.data().special_name
+  useEffect(() => {
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    let d = new Date();
+    let dayName = days[d.getDay()];
+    let dailyDeals = [];
+    let db = firebase.firestore();
+    let dealsRef = db.collection("DailyDeals").where("day", "==", dayName);
+    dealsRef.get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        dailyDeals.push({
+          key: doc.id,
+          business_name: doc.data().business_name,
+          business_type: doc.data().business_type,
+          deal_description: doc.data().deal_description,
+          special_name: doc.data().special_name
+        });
       });
+      setDeals(dailyDeals);
     });
-    setDeals(dailyDeals);
-  });
+  }, []);
 
   return (
     <FlatList
       data={deals}
-      //keyExtractor={key => key}
       renderItem={({ item }) => {
         return (
           <Text>
