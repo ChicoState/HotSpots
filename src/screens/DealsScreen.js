@@ -8,7 +8,7 @@ import "firebase/firestore";
 import { YellowBox } from "react-native";
 import _ from "lodash";
 
-const DealsScreen = function() {
+const DealsScreen = ({navigation}) => {
   const [deals, setDeals] = useState([]);
 
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -73,7 +73,7 @@ const DealsScreen = function() {
               <Button 
               title = {item.business_name}
               //console log show on pc consile for expo
-              //onPress = {}
+              onPress = {() => navigation.navigate('Detail', {id: item.key})}
               />
         </View>
         );
