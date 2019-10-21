@@ -5,7 +5,7 @@ import {
 } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { useScreens } from "react-native-screens";
-useScreens();
+useScreens(); //eslint-disable-line
 import SearchScreen from "./src/screens/SearchScreen";
 import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 import EventsResultsScreen from "./src/screens/EventsResultsScreen";
