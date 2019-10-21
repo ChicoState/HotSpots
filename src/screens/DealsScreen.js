@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Button } from "react-native";
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 import firebase from "firebase/app";
@@ -69,10 +69,13 @@ const DealsScreen = function() {
       data={deals}
       renderItem={({ item }) => {
         return (
-          <Text>
-            {item.business_name}
-            {item.special_name}
-          </Text>
+          <View style={styles.textStyle}>
+              <Button 
+              title = {item.business_name}
+              //console log show on pc consile for expo
+              //onPress = {}
+              />
+        </View>
         );
       }}
     ></FlatList>
