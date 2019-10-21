@@ -70,12 +70,12 @@ const DealsScreen = function() {
       renderItem={({ item }) => {
         return (
           <View style={styles.textStyle}>
-              <Button 
-              title = {item.business_name}
+            <Button
+              title={item.business_name}
               //console log show on pc consile for expo
               //onPress = {}
-              />
-        </View>
+            />
+          </View>
         );
       }}
     ></FlatList>
