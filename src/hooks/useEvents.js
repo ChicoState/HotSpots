@@ -9,10 +9,11 @@ export default () => {
   const eventsApi = async searchTerm => {
     //searchTerm === "Event to search for: string"
     try {
-      console.log(searchTerm)
+      console.log(searchTerm);
       const response = await ticketMaster.get("events.json", {
         params: {
           keyword: searchTerm,
+          size: 20,
           apikey: apiKey
         }
       });
