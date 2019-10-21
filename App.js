@@ -80,7 +80,7 @@ const tabNavigator = createBottomTabNavigator(
     Deals: DealsStack,
     Map: MapStack
   },
-  { initialRouteName: "EventsSearch" }
+  { initialRouteName: "Search" }
 );
 
 export default createAppContainer(tabNavigator);
