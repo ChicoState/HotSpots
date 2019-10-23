@@ -11,9 +11,12 @@ const BusinessesShowScreen = function({ navigation }) {
     setBusiness(response.data);
   };
 
-  useEffect(function() {
-    getBusiness(id);
-  }, []);
+  useEffect(
+    function() {
+      getBusiness(id);
+    },
+    [id]
+  );
 
   if (!business) {
     return null;
