@@ -13,6 +13,7 @@ export default () => {
       const response = await ticketMaster.get("events.json", {
         params: {
           keyword: searchTerm,
+          size: 20,
           apikey: apiKey
         }
       });

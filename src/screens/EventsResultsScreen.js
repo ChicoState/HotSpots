@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import useEvents from "../hooks/useEvents";
 
-const EventsScreen = function() {
+const EventsResultsScreen = function() {
   //const [term, setTerm] = useState("");
   const [eventsApi, events, setEvents] = useEvents();
 
@@ -18,4 +18,5 @@ const EventsScreen = function() {
 
 const styles = StyleSheet.create({});
 
-export default EventsScreen;
+
+export default EventsResultsScreen;
