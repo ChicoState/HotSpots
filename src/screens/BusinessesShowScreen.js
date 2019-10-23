@@ -1,7 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import { View, Text, StyleSheet, Button, FlatList, Image } from "react-native";
 import yelp from "../api/yelp";
-import getDirections from 'react-native-google-maps-directions'
+import getDirections from 'react-native-google-maps-directions';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+
 
 
 const BusinessesShowScreen = function({ navigation }) {
@@ -22,15 +24,40 @@ const BusinessesShowScreen = function({ navigation }) {
   }
 
   if (business) {
+    // class MapApp extends Component {
+    //   constructor(props) {
+    //     super(props);
+
+    //     this.state = {
+    //         latitude: 0,
+    //         longitude: 0
+    //     }
+    //   }
+    //   componentDidMount() {
+    //     this.watchId = navigator.geolocation.watchPosition(
+    //       (position) => {
+    //       this.setState({
+    //           latitude: position.coords.latitude,
+    //           longitude: position.coords.longitude
+    //       });
+    //       },
+    //       (error) => {
+    //           this.setState({ error: error.message })
+    //       },
+    //       { enableHighAccuracy: false, timeout: 1, maximumAge: 1, distanceFilter: 5 }
+    //     )
+    //   }
+    // }
+
     handleGetDirections = () => {
       const data = {
          source: {
-          latitude: -33.8356372,
-          longitude: 18.6947617
+          latitude: 39.7356372,//this.state.latitude,//-33.8356372,
+          longitude: 121.8347617//this.state.longitude //18.6947617
         },
         destination: {
-          latitude: -33.8600024,
-          longitude: 18.697459
+          latitude: 45.8600024,
+          longitude: 130.697459
         },
         params: [
           {
