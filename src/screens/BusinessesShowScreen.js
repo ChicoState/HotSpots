@@ -24,30 +24,7 @@ const BusinessesShowScreen = function({ navigation }) {
   }
 
   if (business) {
-    // class MapApp extends Component {
-    //   constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         latitude: 0,
-    //         longitude: 0
-    //     }
-    //   }
-    //   componentDidMount() {
-    //     this.watchId = navigator.geolocation.watchPosition(
-    //       (position) => {
-    //       this.setState({
-    //           latitude: position.coords.latitude,
-    //           longitude: position.coords.longitude
-    //       });
-    //       },
-    //       (error) => {
-    //           this.setState({ error: error.message })
-    //       },
-    //       { enableHighAccuracy: false, timeout: 1, maximumAge: 1, distanceFilter: 5 }
-    //     )
-    //   }
-    // }
+    
 
     handleGetDirections = () => {
       const data = {
