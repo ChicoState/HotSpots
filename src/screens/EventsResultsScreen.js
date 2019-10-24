@@ -18,5 +18,4 @@ const EventsResultsScreen = function() {
 
 const styles = StyleSheet.create({});
 
-
 export default EventsResultsScreen;
