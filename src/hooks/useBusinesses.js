@@ -30,7 +30,7 @@ export default function() {
   // Call searchAPI when component is first rendered.
   //searchApi("pasta"); BAD CODE!
   useEffect(() => {
-    searchApi("pasta");
+    searchApi("bar");
   }, []);
 
   return [searchApi, businesses, errorMessage];
