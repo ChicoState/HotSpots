@@ -8,7 +8,7 @@ cache:
     - ~/.npm
     - .jest
 before_script:
-  - npm install -g npm@latest
+  - npm install -g npm@6.11.3
 script:
   - npm ci
   - npx jest --ci --passWithNoTests
