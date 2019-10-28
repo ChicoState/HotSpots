@@ -11,12 +11,9 @@ import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 import EventsResultsScreen from "./src/screens/EventsResultsScreen";
 import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
-<<<<<<< HEAD
 import DealsScreen from "./src/screens/DealsScreen";
 import DealDetail from "./src/screens/DealDetail";
-=======
-// import DealsScreen from "./src/screens/DealsScreen";
->>>>>>> 9f394ddd538e753dfb23118e0651a9d98ffb399e
+
 
 const SearchStack = createStackNavigator(
   {
