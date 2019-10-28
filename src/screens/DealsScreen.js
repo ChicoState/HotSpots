@@ -55,9 +55,7 @@ const DealsScreen = ({navigation}) => {
         dailyDeals.push({
           key: doc.id,
           business_name: doc.data().business_name,
-          business_type: doc.data().business_type,
-          deal_description: doc.data().deal_description,
-          special_name: doc.data().special_name
+          business_type: doc.data().business_type
         });
       });
       setDeals(dailyDeals);
