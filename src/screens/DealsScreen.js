@@ -8,7 +8,7 @@ import "firebase/firestore";
 import { YellowBox } from "react-native";
 import _ from "lodash";
 
-const DealsScreen = function() {
+const DealsScreen = ({navigation}) => {
   const [deals, setDeals] = useState([]);
 
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -55,9 +55,7 @@ const DealsScreen = function() {
         dailyDeals.push({
           key: doc.id,
           business_name: doc.data().business_name,
-          business_type: doc.data().business_type,
-          deal_description: doc.data().deal_description,
-          special_name: doc.data().special_name
+          business_type: doc.data().business_type
         });
       });
       setDeals(dailyDeals);
@@ -73,9 +71,9 @@ const DealsScreen = function() {
             <Button
               title={item.business_name}
               //console log show on pc consile for expo
-              //onPress = {}
-            />
-          </View>
+              onPress = {() => navigation.navigate('Detail', {id: item.key})}
+              />
+        </View>
         );
       }}
     ></FlatList>

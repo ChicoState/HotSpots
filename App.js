@@ -11,7 +11,9 @@ import BusinessesShowScreen from "./src/screens/BusinessesShowScreen";
 import EventsResultsScreen from "./src/screens/EventsResultsScreen";
 import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
-// import DealsScreen from "./src/screens/DealsScreen";
+import DealsScreen from "./src/screens/DealsScreen";
+import DealDetail from "./src/screens/DealDetail";
+
 
 const SearchStack = createStackNavigator(
   {
@@ -59,25 +61,26 @@ const MapStack = createStackNavigator(
   }
 );
 
-// const DealsStack = createStackNavigator(
-//   {
-//     Deals: DealsScreen
-//     // Map: MapScreen
-//   },
-//   {
-//     initialRouteName: "Deals",
-//     defaultNavigationOptions: {
-//       title: "Daily Deals"
-//     }
-//   }
-// );
+const DealsStack = createStackNavigator(
+  {
+    Deals: DealsScreen,
+    Detail: DealDetail
+    // Map: MapScreen
+  },
+  {
+    initialRouteName: "Deals",
+    defaultNavigationOptions: {
+      title: "Daily Deals"
+    }
+  }
+);
 
 const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
     Search: SearchStack,
     EventsSearch: EventsSearchStack,
-    // Deals: DealsStack,
+    Deals: DealsStack,
     Map: MapStack
   },
   { initialRouteName: "Search" }
