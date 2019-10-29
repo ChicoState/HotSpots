@@ -80,7 +80,7 @@ const tabNavigator = createBottomTabNavigator(
     //Home: HomeStack
     Search: SearchStack,
     EventsSearch: EventsSearchStack,
-    // Deals: DealsStack,
+    Deals: DealsStack,
     Map: MapStack
   },
   { initialRouteName: "Search" }
