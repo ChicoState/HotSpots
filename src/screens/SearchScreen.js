@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useBusinesses from "../hooks/useBusinesses";
 import BusinessesList from "../components/BusinessesList";
+import getDirections from 'react-native-google-maps-directions';
 
 const SearchScreen = function() {
   /*

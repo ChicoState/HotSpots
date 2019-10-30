@@ -12,6 +12,8 @@ import EventsResultsScreen from "./src/screens/EventsResultsScreen";
 import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
 import DealsScreen from "./src/screens/DealsScreen";
+import DealDetail from "./src/screens/DealDetail";
+
 
 const SearchStack = createStackNavigator(
   {
@@ -61,7 +63,8 @@ const MapStack = createStackNavigator(
 
 const DealsStack = createStackNavigator(
   {
-    Deals: DealsScreen
+    Deals: DealsScreen,
+    Detail: DealDetail
     // Map: MapScreen
   },
   {
