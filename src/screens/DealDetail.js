@@ -8,6 +8,8 @@ import "firebase/firestore";
 
 const DealDetail = ({navigation}) => {
     const id = navigation.getParam('id');
+    const business_name = navigation.getParam('business_name')
+    const business_type = navigation.getParam('business_type')
     const [todaysdeals, settodaysdeals] = useState([]);
 
    
@@ -16,6 +18,7 @@ const DealDetail = ({navigation}) => {
 
     let Deals = []; 
     let getdeals = db.collection("DailyDeals").doc(id).collection('deallist')
+
 
     getdeals.get().then(collections => {
       collections.forEach(collection => {
@@ -32,25 +35,50 @@ const DealDetail = ({navigation}) => {
   }, []);
 
 
-    return<FlatList
-      data={todaysdeals}
-      renderItem={({ item }) => {
-        return (
-          <View style={styles.textStyle}>
-            <Text>{item.special_name}</Text>
-            <Text>{item.deal_description}</Text>
-        </View>
-        );
-      }}
-    ></FlatList>
+    return<View>
+      <Text style={styles.headerStyle}>{business_name}</Text>
+      <Text style={styles.subHeaderStyles}>{business_type}</Text>
+      <Text>Todays deals:</Text>
+      <FlatList
+          data={todaysdeals}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.textStyle}>
+                <Text>{item.special_name}</Text>
+                <Text>{item.deal_description}</Text>
+            </View>
+            );
+          }}
+        ></FlatList>
+    </View>
 }
 
 const styles = StyleSheet.create({
     textStyle: {
-      marginVertical: 10
+      marginVertical: 5
     },
     scrollView: {
       flex: 1
+    },
+    headerStyle:
+    {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        fontSize: 30
+    },
+    subHeaderStyles:
+    {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#fff',
+        fontSize: 20
+    },
+    secondHeader:
+    {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        backgroundColor: '#fff',
+        fontSize: 11  
     }
 });
 

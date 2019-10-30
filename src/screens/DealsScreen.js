@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList, Button } from "react-native";
+import { View, Text, StyleSheet, FlatList,TouchableOpacity } from "react-native";
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 import firebase from "firebase/app";
@@ -68,11 +68,9 @@ const DealsScreen = ({navigation}) => {
       renderItem={({ item }) => {
         return (
           <View style={styles.textStyle}>
-            <Button
-              title={item.business_name}
-              //console log show on pc consile for expo
-              onPress = {() => navigation.navigate('Detail', {id: item.key})}
-              />
+              <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
+                  <Text>{item.business_name}</Text>
+              </TouchableOpacity>
         </View>
         );
       }}
