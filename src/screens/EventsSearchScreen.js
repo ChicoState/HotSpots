@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 
 const EventsSearchScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState("");
   const [date, setDate] = useState("");
+  const [params, setParams] = useState({});
+
+  const buildParams = () => {
+    if (searchTerm) setParams((params.keyword = searchTerm));
+    if (city) setParams((params.city = city));
+    if (date) setParams((params.date = date));
+    console.log(params);
+  };
 
   return (
     <View>
@@ -39,19 +47,26 @@ const EventsSearchScreen = () => {
           onChangeText={setDate}
         />
       </View>
+      <Button title="Search" onPress={() => buildParams()} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   entryStyle: {
-    flexDirection: "row"
+    flexDirection: "row",
+    marginVertical: 5,
+    marginHorizontal: 5
   },
   labelStyle: {
-    alignSelf: "center"
+    alignSelf: "center",
+    width: 50,
+    fontWeight: "bold"
   },
   inputStyle: {
-    flex: 1
+    flex: 1,
+    borderRadius: 5,
+    backgroundColor: "#F0EEEE"
   }
 });
 
