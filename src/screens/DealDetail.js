@@ -22,11 +22,12 @@ const DealDetail = ({navigation}) => {
 
     getdeals.get().then(collections => {
       collections.forEach(collection => {
-        console.log('Found subcollection with id:', collection.id);
         Deals.push({
           key: collection.id,
           deal_description: collection.data().deal_description,
-          special_name: collection.data().special_name
+          special_name: collection.data().special_name,
+          time_end: collection.data().time_end,
+          time_start: collection.data().time_start
         });
 
       });
@@ -38,14 +39,16 @@ const DealDetail = ({navigation}) => {
     return<View>
       <Text style={styles.headerStyle}>{business_name}</Text>
       <Text style={styles.subHeaderStyles}>{business_type}</Text>
-      <Text>Todays deals:</Text>
+      <Text style={styles.secondHeader}>Todays deals:</Text>
       <FlatList
           data={todaysdeals}
           renderItem={({ item }) => {
             return (
-              <View style={styles.textStyle}>
-                <Text>{item.special_name}</Text>
-                <Text>{item.deal_description}</Text>
+              <View style={styles.dealHeader}>
+                <Text style={styles.dealHeader}>{item.special_name}</Text>
+                <Text style={styles.dealHeader}>{item.deal_description}</Text>
+                <Text style={styles.dealHeader}>{item.time_start}</Text>
+                <Text style={styles.dealHeader}>{item.time_end}</Text>
             </View>
             );
           }}
@@ -64,21 +67,27 @@ const styles = StyleSheet.create({
     {
         justifyContent: 'center',
         alignSelf: 'center',
+        color: '#f00',
         fontSize: 30
     },
     subHeaderStyles:
     {
         justifyContent: 'center',
         alignSelf: 'center',
-        backgroundColor: '#fff',
-        fontSize: 20
+        fontSize: 25
     },
     secondHeader:
     {
-        justifyContent: 'center',
-        alignSelf: 'center',
+        marginVertical: 10,
+        marginHorizontal: 10,
         backgroundColor: '#fff',
-        fontSize: 11  
+        fontSize: 15
+    },
+    dealHeader:
+    {
+        marginHorizontal: 20,
+        backgroundColor: '#fff',
+        fontSize: 15
     }
 });
 

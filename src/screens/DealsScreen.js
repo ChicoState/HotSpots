@@ -63,18 +63,21 @@ const DealsScreen = ({navigation}) => {
   }, []);
 
   return (
-    <FlatList
-      data={deals}
-      renderItem={({ item }) => {
-        return (
-          <View style={styles.textStyle}>
-              <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
-                  <Text>{item.business_name}</Text>
-              </TouchableOpacity>
-        </View>
-        );
-      }}
-    ></FlatList>
+    <View>
+      <Text style={styles.headerStyle}>Businesses with deals today!</Text>
+      <FlatList
+        data={deals}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.textStyle}>
+                <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
+                    <Text style={styles.subHeaderStyles}>{item.business_name}</Text>
+                </TouchableOpacity>
+          </View>
+          );
+        }}
+      ></FlatList>
+    </View>
   );
 };
 
@@ -84,6 +87,27 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1
+  },
+  headerStyle:
+  {
+      justifyContent: 'center',
+      alignSelf: 'center',
+      color: '#f00',
+      fontSize: 30
+  },
+  subHeaderStyles:
+  {
+      justifyContent: 'center',
+      alignSelf: 'center',
+      backgroundColor: '#fff',
+      fontSize: 20
+  },
+  secondHeader:
+  {
+      justifyContent: 'center',
+      alignSelf: 'center',
+      backgroundColor: '#fff',
+      fontSize: 11  
   }
 });
 
