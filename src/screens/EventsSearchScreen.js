@@ -8,7 +8,7 @@ const EventsSearchScreen = () => {
   const [params, setParams] = useState({});
 
   const buildParams = () => {
-    if (searchTerm) setParams((params.term = searchTerm));
+    if (searchTerm) setParams((params.keyword = searchTerm));
     if (city) setParams((params.city = city));
     if (date) setParams((params.date = date));
     console.log(params);
