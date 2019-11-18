@@ -43,10 +43,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginLeft: 15,
-    marginBottom: 5
+    marginBottom: 5,
+    color: "white"
   },
   containerStyle: {
-    marginBottom: 10
+    marginBottom: 10,
+    color: "white"
   }
 });
 

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useBusinesses from "../hooks/useBusinesses";
 import BusinessesList from "../components/BusinessesList";
-import getDirections from 'react-native-google-maps-directions';
+import getDirections from "react-native-google-maps-directions";
 
 const SearchScreen = function() {
   /*
@@ -24,7 +24,7 @@ const SearchScreen = function() {
 
   return (
     // {flex: 1} constrains the View component so that it doesn't render anything out of view of the screen.
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       <SearchBar
         term={term}
         onTermChange={setTerm}

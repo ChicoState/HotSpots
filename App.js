@@ -14,7 +14,6 @@ import MapScreen from "./src/screens/MapScreen";
 import DealsScreen from "./src/screens/DealsScreen";
 import DealDetail from "./src/screens/DealDetail";
 
-
 const SearchStack = createStackNavigator(
   {
     Search: SearchScreen,
@@ -26,7 +25,11 @@ const SearchStack = createStackNavigator(
       title: "HotSpots",
       headerTitleStyle: {
         flex: 1,
-        textAlign: "center"
+        textAlign: "center",
+        color: "white"
+      },
+      headerStyle: {
+        backgroundColor: "black"
       }
     }
   }
@@ -70,7 +73,8 @@ const DealsStack = createStackNavigator(
   {
     initialRouteName: "Deals",
     defaultNavigationOptions: {
-      title: "Daily Deals"
+      title: "Daily Deals",
+      color: "white"
     }
   }
 );
@@ -83,7 +87,15 @@ const tabNavigator = createBottomTabNavigator(
     Deals: DealsStack,
     Map: MapStack
   },
-  { initialRouteName: "Search" }
+  {
+    initialRouteName: "Search",
+    color: "white",
+    tabBarOptions: {
+      activeBackgroundColor: "black",
+      inactiveBackgroundColor: "black",
+      activeTintColor: "white"
+    }
+  }
 );
 
 export default createAppContainer(tabNavigator);

@@ -6,7 +6,7 @@ const BusinessesDetail = function({ business }) {
     <View style={styles.containerStyle}>
       <Image style={styles.imageStyle} source={{ uri: business.image_url }} />
       <Text style={styles.nameStyle}>{business.name}</Text>
-      <Text>
+      <Text style={{ color: "white" }}>
         {business.rating} Stars, {business.review_count} Reviews
       </Text>
     </View>
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   nameStyle: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "white"
   }
 });
 
