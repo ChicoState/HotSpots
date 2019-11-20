@@ -1,11 +1,18 @@
 import React, { Component, useState, useEffect } from "react";
-import { View, Text, Platform, StyleSheet, Button, FlatList, Image, PermissionsAndroid} from "react-native";
+import { View, 
+  Text, 
+  Platform, 
+  StyleSheet, 
+  Button, 
+  FlatList, 
+  Image, 
+  PermissionsAndroid,
+  TouchableOpacity,} from "react-native";
 import yelp from "../api/yelp";
-import getDirections from 'react-native-google-maps-directions';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Linking } from "expo";
+// import * as from "./images";
 
-
+var fingerpic = require('../images/fingerPoint.png');
 
 const BusinessesShowScreen = function({ navigation }) {
   const [business, setBusiness] = useState(null);
@@ -29,13 +36,15 @@ const BusinessesShowScreen = function({ navigation }) {
   
   if (business) {
     var businessName = business.name  
+    var phoneb = business.display_phone
     
     handleGetDirections = () => {
         const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
         const latLng = `${business.coordinates.latitude},${business.coordinates.longitude}`;
         const label = businessName;
+        const phone = phoneb;
         const url = Platform.select({
-          ios: `${scheme}${label}@${latLng}`,
+          ios: `${scheme}${label}${phone}@${latLng}`,
           android: `${scheme}${latLng}(${label})`
         });
         Linking.openURL(url);
@@ -46,9 +55,20 @@ const BusinessesShowScreen = function({ navigation }) {
   return (
     <View>
       <Text style={styles.bigBlue} >{business.name}</Text>
-      <Text>Business latitude = {business.coordinates.latitude}</Text>
-      <Button onPress={this.handleGetDirections} title="Get Directions" />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={this.handleGetDirections}
+      > 
+          <Image  source={fingerpic} style={{width: 40, height:   20}}/>
+          <Text style={styles.button}>
+                Get Directions
+          </Text>
+      </TouchableOpacity>
+      <Image style={styles.imageS} source={fingerpic}/>
+
+      {/* <Button onPress={this.handleGetDirections} title="Get Directions" /> */}
       <FlatList
+        style={styles.back}
         data={business.photos}
         keyExtractor={photo => photo}
         renderItem={({ item }) => {
@@ -68,10 +88,32 @@ const styles = StyleSheet.create({
     width: 300
   },
   bigBlue: {
-    color: 'black',
+    textAlign: 'center',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 30,
-  }
+    backgroundColor: 'black',
+  },
+  back: {
+    backgroundColor: 'black',
+
+  },
+  imageS: {
+    flex: 2,
+    width: 25,
+    height: 25,
+    resizeMode: 'cover',
+    // resizeMode: 'contain',
+  },
+  button: {
+    color: 'blue',
+    fontSize: 25,
+    alignItems: 'center',
+    padding: 15,
+    backgroundColor: 'black'
+    
+    
+  },
 });
 
 export default BusinessesShowScreen;
