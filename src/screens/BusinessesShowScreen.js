@@ -1,8 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
-import { View, Text, StyleSheet, Button, FlatList, Image } from "react-native";
+import { View, Text, Platform, StyleSheet, Button, FlatList, Image, PermissionsAndroid} from "react-native";
 import yelp from "../api/yelp";
 import getDirections from 'react-native-google-maps-directions';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { Linking } from "expo";
 
 
 
@@ -25,53 +26,27 @@ const BusinessesShowScreen = function({ navigation }) {
   if (!business) {
     return null;
   }
-
-  if (business) {
-    
-
-    handleGetDirections = () => {
-      const data = {
-         source: {
-          latitude: 39.7356372,//this.state.latitude,//-33.8356372,
-          longitude: 121.8347617//this.state.longitude //18.6947617
-        },
-        destination: {
-          latitude: 45.8600024,
-          longitude: 130.697459
-        },
-        params: [
-          {
-            key: "travelmode",
-            value: "driving"        // may be "walking", "bicycling" or "transit" as well
-          },
-          {
-            key: "dir_action",
-            value: "navigate"       // this instantly initializes navigation using the given travel mode
-          }
-        ],
-        waypoints: [
-          {
-            latitude: -33.8600025,
-            longitude: 18.697452
-          },
-          {
-            latitude: -33.8600026,
-            longitude: 18.697453
-          },
-             {
-            latitude: -33.8600036,
-            longitude: 18.697493
-          }
-        ]
-      }
   
-      getDirections(data)
+  if (business) {
+    var businessName = business.name  
+    
+    handleGetDirections = () => {
+        const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+        const latLng = `${business.coordinates.latitude},${business.coordinates.longitude}`;
+        const label = businessName;
+        const url = Platform.select({
+          ios: `${scheme}${label}@${latLng}`,
+          android: `${scheme}${latLng}(${label})`
+        });
+        Linking.openURL(url);
+      
     }
   }
 
   return (
     <View>
       <Text style={styles.bigBlue} >{business.name}</Text>
+      <Text>Business latitude = {business.coordinates.latitude}</Text>
       <Button onPress={this.handleGetDirections} title="Get Directions" />
       <FlatList
         data={business.photos}
