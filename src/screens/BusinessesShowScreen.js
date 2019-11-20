@@ -42,7 +42,7 @@ const BusinessesShowScreen = function({ navigation }) {
         const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
         const latLng = `${business.coordinates.latitude},${business.coordinates.longitude}`;
         const label = businessName;
-        const phone = phoneb;
+        // const phone = phoneb;
         const url = Platform.select({
           ios: `${scheme}${label}${phone}@${latLng}`,
           android: `${scheme}${latLng}(${label})`
@@ -59,13 +59,12 @@ const BusinessesShowScreen = function({ navigation }) {
         style={styles.button}
         onPress={this.handleGetDirections}
       > 
-          <Image  source={fingerpic} style={{width: 40, height:   20}}/>
           <Text style={styles.button}>
                 Get Directions
           </Text>
-      </TouchableOpacity>
-      <Image style={styles.imageS} source={fingerpic}/>
+          <Image  source={fingerpic} style={{alignItems:'center', width: 40, height:   20}}/>
 
+      </TouchableOpacity>
       {/* <Button onPress={this.handleGetDirections} title="Get Directions" /> */}
       <FlatList
         style={styles.back}
