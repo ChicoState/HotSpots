@@ -36,19 +36,18 @@ const DealDetail = ({navigation}) => {
   }, []);
 
 
-    return<View>
-      <Text style={styles.headerStyle}>{business_name}</Text>
-      <Text style={styles.subHeaderStyles}>{business_type}</Text>
-      <Text style={styles.secondHeader}>Todays deals:</Text>
+    return<View style={{ flex: 1, backgroundColor: "black" }}>
+      <Text style={styles.bigBlue}>{business_name}</Text>
+      <Text style={styles.bigBluesub}>{business_type}</Text>
       <FlatList
           data={todaysdeals}
           renderItem={({ item }) => {
             return (
-              <View style={styles.dealHeader}>
-                <Text style={styles.dealHeader}>{item.special_name}</Text>
-                <Text style={styles.dealHeader}>{item.deal_description}</Text>
-                <Text style={styles.dealHeader}>{item.time_start}</Text>
-                <Text style={styles.dealHeader}>{item.time_end}</Text>
+              <View style={styles.card}>
+                <Text style={styles.text}>{item.special_name}</Text>
+                <Text style={styles.textsub}>{item.deal_description}</Text>
+                <Text style={styles.textsub}>{item.time_start}</Text>
+                <Text style={styles.textsub}>{item.time_end}</Text>
             </View>
             );
           }}
@@ -57,38 +56,40 @@ const DealDetail = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-    textStyle: {
-      marginVertical: 5
-    },
-    scrollView: {
-      flex: 1
-    },
-    headerStyle:
-    {
-        justifyContent: 'center',
-        alignSelf: 'center',
-        color: '#f00',
-        fontSize: 30
-    },
-    subHeaderStyles:
-    {
-        justifyContent: 'center',
-        alignSelf: 'center',
-        fontSize: 25
-    },
-    secondHeader:
-    {
-        marginVertical: 10,
-        marginHorizontal: 10,
-        backgroundColor: '#fff',
-        fontSize: 15
-    },
-    dealHeader:
-    {
-        marginHorizontal: 20,
-        backgroundColor: '#fff',
-        fontSize: 15
-    }
+  bigBlue: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 30,
+    backgroundColor: "black"
+  },  
+  bigBluesub: {
+    textAlign: "center",
+    color: "white",
+    //fontWeight: "bold",
+    fontSize: 25,
+    backgroundColor: "black"
+  },
+  back: {
+    backgroundColor: "black"
+  },
+  card: {
+    padding: 5,
+  },
+  text: {
+    color: "white",
+    fontSize: 25,
+    alignItems: "center",
+    //padding: 5,
+    backgroundColor: "black"
+  },
+  textsub: {
+    color: "white",
+    fontSize: 12,
+    alignItems: "flex-start",
+    //padding: 10,
+    backgroundColor: "black"
+  }
 });
 
 export default DealDetail;
