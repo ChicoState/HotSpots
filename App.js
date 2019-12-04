@@ -37,29 +37,17 @@ const SearchStack = createStackNavigator(
 
 const EventsSearchStack = createStackNavigator(
   {
-    EventsSearch: EventsSearchScreen,
+    ["Events Search"]: EventsSearchScreen,
     EventsResults: EventsResultsScreen
   },
   {
-    initialRouteName: "EventsSearch",
+    initialRouteName: "Events Search",
     defaultNavigationOptions: {
-      title: "Events",
+      title: "Events Search",
       headerTitleStyle: {
         flex: 1,
         textAlign: "center"
       }
-    }
-  }
-);
-
-const MapStack = createStackNavigator(
-  {
-    Map: MapScreen
-  },
-  {
-    initialRouteName: "Map",
-    defaultNavigationOptions: {
-      title: "Map View"
     }
   }
 );
@@ -90,9 +78,8 @@ const tabNavigator = createBottomTabNavigator(
   {
     //Home: HomeStack
     Search: SearchStack,
-    EventsSearch: EventsSearchStack,
-    Deals: DealsStack,
-    Map: MapStack
+    ["Events Search"]: EventsSearchStack,
+    Deals: DealsStack
   },
   {
     initialRouteName: "Search",
