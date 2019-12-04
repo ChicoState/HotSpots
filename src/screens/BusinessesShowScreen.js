@@ -44,7 +44,7 @@ const BusinessesShowScreen = function({ navigation }) {
         const label = businessName;
         // const phone = phoneb;
         const url = Platform.select({
-          ios: `${scheme}${label}${phone}@${latLng}`,
+          ios: `${scheme}${label}@${latLng}`,
           android: `${scheme}${latLng}(${label})`
         });
         Linking.openURL(url);
