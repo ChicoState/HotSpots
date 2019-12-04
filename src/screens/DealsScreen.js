@@ -63,15 +63,16 @@ const DealsScreen = ({navigation}) => {
   }, []);
 
   return (
-    <View>
-      <Text style={styles.headerStyle}>Businesses with deals today!</Text>
+    <View  style={{ flex: 1, backgroundColor: "black" }}>
+      <Text style={styles.bigBlue}>Businesses with deals today!</Text>
       <FlatList
+        style={styles.back}
         data={deals}
         renderItem={({ item }) => {
           return (
-            <View style={styles.textStyle}>
+            <View>
                 <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
-                    <Text style={styles.subHeaderStyles}>{item.business_name}</Text>
+                    <Text style={styles.text}>{item.business_name}</Text>
                 </TouchableOpacity>
           </View>
           );
@@ -82,32 +83,22 @@ const DealsScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  textStyle: {
-    marginVertical: 10
+  bigBlue: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 30,
+    backgroundColor: "black"
   },
-  scrollView: {
-    flex: 1
+  back: {
+    backgroundColor: "black"
   },
-  headerStyle:
-  {
-      justifyContent: 'center',
-      alignSelf: 'center',
-      color: '#f00',
-      fontSize: 30
-  },
-  subHeaderStyles:
-  {
-      justifyContent: 'center',
-      alignSelf: 'center',
-      backgroundColor: '#fff',
-      fontSize: 20
-  },
-  secondHeader:
-  {
-      justifyContent: 'center',
-      alignSelf: 'center',
-      backgroundColor: '#fff',
-      fontSize: 11  
+  text: {
+    color: "white",
+    fontSize: 25,
+    alignItems: "center",
+    padding: 15,
+    backgroundColor: "black"
   }
 });
 

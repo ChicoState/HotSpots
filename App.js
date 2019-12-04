@@ -74,7 +74,14 @@ const DealsStack = createStackNavigator(
     initialRouteName: "Deals",
     defaultNavigationOptions: {
       title: "Daily Deals",
-      color: "white"
+      headerTitleStyle: {
+        flex: 1,
+        textAlign: "center",
+        color: "white"
+      },
+      headerStyle: {
+        backgroundColor: "black"
+      }
     }
   }
 );
