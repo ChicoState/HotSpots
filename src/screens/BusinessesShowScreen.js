@@ -14,6 +14,8 @@ import yelp from "../api/yelp";
 import { Linking } from "expo";
 // import * as from "./images";
 
+
+
 var fingerpic = require("../images/fingerPoint.png");
 
 const BusinessesShowScreen = function({ navigation }) {
@@ -38,7 +40,20 @@ const BusinessesShowScreen = function({ navigation }) {
 
   if (business) {
     var businessName = business.name;
-    var phone = business.display_phone;
+    var phoneNum = business.display_phone;
+
+    dialCall = () => {
+      const scheme = Platform.select({
+        ios: "tel:",
+        android: "telprompt:"
+      })
+      const phoneNumberBus = `${business.display_phone}`;
+      const phoneNumber = Platform.select({
+        ios: `${scheme}${phoneNumberBus}`,
+        android: `${scheme}${phoneNumberBus}`
+      })
+      Linking.openURL(phoneNumber);
+    };
 
     handleGetDirections = () => {
       const scheme = Platform.select({
@@ -47,18 +62,32 @@ const BusinessesShowScreen = function({ navigation }) {
       });
       const latLng = `${business.coordinates.latitude},${business.coordinates.longitude}`;
       const label = businessName;
-      // const phone = phoneb;
       const url = Platform.select({
-        ios: `${scheme}${label}${phone}@${latLng}`,
+        ios: `${scheme}${label}
+        ${phoneNum}@${latLng}`,
         android: `${scheme}${latLng}(${label})`
       });
       Linking.openURL(url);
     };
   }
 
+//   <TouchableOpacity onPress={this.dialCall} activeOpacity={0.7} style={styles.button} >
+
+//   <Text style={styles.TextStyle}>OPEN PHONE NUMBER IN DIAL SCREEN</Text>
+
+// </TouchableOpacity>
   return (
     <View>
       <Text style={styles.bigBlue}>{business.name}</Text>
+      <TouchableOpacity onPress={this.dialCall} style={styles.phoneButton} >
+        <Text style={styles.phoneButton}>{business.display_phone}</Text>
+      </TouchableOpacity>
+      <Text style={styles.back}>Rating: {business.rating} </Text>
+      <Text style={styles.back}>Price: {business.price} </Text>
+      <Text style={styles.back}>Total Reviews: {business.review_count} </Text> 
+
+
+
       <TouchableOpacity
         style={styles.button}
         onPress={this.handleGetDirections}
@@ -95,7 +124,11 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   back: {
-    backgroundColor: "black"
+    backgroundColor: "black",
+    fontSize: 15,
+    color: "white",
+    textAlign: "left"
+    
   },
   imageS: {
     flex: 2,
@@ -110,6 +143,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 15,
     backgroundColor: "black"
+  },
+  phoneButton: {
+    color: 'blue',
+    fontSize: 15,
+    backgroundColor: 'black'
   }
 });
 
