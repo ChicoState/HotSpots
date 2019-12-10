@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 
-const EventsSearchScreen = () => {
+const EventsSearchScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [city, setCity] = useState("");
   const [date, setDate] = useState("");
@@ -11,14 +11,19 @@ const EventsSearchScreen = () => {
     if (searchTerm) setParams((params.keyword = searchTerm));
     if (city) setParams((params.city = city));
     if (date) setParams((params.date = date));
-    console.log(params);
+    var parameters = {
+      keyword: searchTerm,
+      city: city,
+      startDate: date
+    };
+    return parameters;
   };
 
   return (
     <View>
       <Text>Search For Upcoming Events</Text>
       <View style={styles.entryStyle}>
-        <Text style={styles.labelStyle}>*Event: </Text>
+        <Text style={(styles.labelStyle, { color: "red" })}>*Event: </Text>
         <TextInput
           style={styles.inputStyle}
           placeholder="Select Event"
@@ -32,7 +37,7 @@ const EventsSearchScreen = () => {
         <TextInput
           style={styles.inputStyle}
           placeholder="Select City"
-          autoCorrect={false}
+          //autoCorrect={false}
           value={city}
           onChangeText={setCity}
         />
@@ -42,12 +47,17 @@ const EventsSearchScreen = () => {
         <TextInput
           style={styles.inputStyle}
           placeholder="Select Date"
-          autoCorrect={false}
+          //autoCorrect={false}
           value={date}
           onChangeText={setDate}
         />
       </View>
-      <Button title="Search" onPress={() => buildParams()} />
+      <Button
+        title="Search"
+        onPress={() =>
+          navigation.navigate("EventsResults", { object: buildParams() })
+        }
+      />
     </View>
   );
 };
