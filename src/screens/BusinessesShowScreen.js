@@ -8,10 +8,13 @@ import {
   FlatList,
   Image,
   PermissionsAndroid,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from "react-native";
 import yelp from "../api/yelp";
 import { Linking } from "expo";
+import { Ionicons } from '@expo/vector-icons';
+
 // import * as from "./images";
 
 
@@ -79,16 +82,32 @@ const BusinessesShowScreen = function({ navigation }) {
   return (
     <View>
       <Text style={styles.bigBlue}>{business.name}</Text>
-      <TouchableOpacity onPress={this.dialCall} style={styles.phoneButton} >
-        <Text style={styles.phoneButton}>{business.display_phone}</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableHighlight 
+          activeOpacity = {.5} 
+          onPress={this.dialCall}>
+          <Text style={styles.phoneButton}>{business.display_phone}</Text>
+        </TouchableHighlight>
+      </View>
       <Text style={styles.back}>Rating: {business.rating} </Text>
       <Text style={styles.back}>Price: {business.price} </Text>
       <Text style={styles.back}>Total Reviews: {business.review_count} </Text> 
+      <View>
+        <TouchableHighlight 
+          activeOpacity = {.5} 
+          onPress={this.dialCall}>
+          <Text style={styles.button}>{business.handleGetDirections}Get Directions</Text>
+        </TouchableHighlight>
+      </View>
+      <View style = {{alignItems: "center", backgroundColor: 'black', padding: 0, height: 45}}>
+        <Image
+          style={{ position: 'absolute', width: 40, height: 25 }}
+          source={fingerpic}
+        />
+      </View>
+    
 
-
-
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.button}
         onPress={this.handleGetDirections}
       >
@@ -97,7 +116,7 @@ const BusinessesShowScreen = function({ navigation }) {
           source={fingerpic}
           style={{ alignItems: "center", width: 40, height: 20 }}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       {/* <Button onPress={this.handleGetDirections} title="Get Directions" /> */}
       <FlatList
         style={styles.back}
@@ -138,16 +157,20 @@ const styles = StyleSheet.create({
     // resizeMode: 'contain',
   },
   button: {
-    color: "blue",
+    color: "#3255C7",
     fontSize: 25,
+    fontWeight: "bold",
     alignItems: "center",
+    textAlign: "center",
     padding: 15,
     backgroundColor: "black"
   },
   phoneButton: {
-    color: 'blue',
+    color: '#3255C7',
+    fontWeight: "bold",
     fontSize: 15,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    padding: 5  //places it in off center from other text
   }
 });
 
