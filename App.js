@@ -13,18 +13,6 @@ import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
 import DealsScreen from "./src/screens/DealsScreen";
 import DealDetail from "./src/screens/DealDetail";
-import LoadingScreen from "./src/screens/LoadingScreen";
-import LoginScreen from "./src/screens/LoginScreen";
-import RegisterScreen from "./src/screens/RegisterScreen";
-import AccountScreen from "./src/screens/AccountScreen";
-import EditAccountScreen from "./src/screens/EditAccountScreen";
-import AddFriendsScreen from "./src/screens/AddFriendsScreen";
-import FriendsListScreen from "./src/screens/FriendsListScreen";
-import { firebaseConfig } from "./src/api/firebaseConfig";
-import * as firebase from "firebase";
-//Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
 import { TabScreen } from "./src/screens/TabScreen";
 
 const AppStack = createStackNavigator({ TabScreen });
@@ -122,56 +110,13 @@ export default createAppContainer(TabScreen);
 //   }
 // );
 
-// const AccountStack = createStackNavigator(
-//  {
-//    Account: AccountScreen,
-//    EditAccount: EditAccountScreen,
-//    AddFriends: AddFriendsScreen,
-//    FriendsList: FriendsListScreen
-//  },
-//  {
-//    initialRouteName: "Account",
-//    defaultNavigationOptions: {
-//      title: "Profile"
-//    }
-//  }
-// );
-
-// const LoginStack = createStackNavigator(
-//  {
-//    Login: LoginScreen,
-//    Register: RegisterScreen
-//  },
-//  {
-//    initialRouteName: "Login",
-//    defaultNavigationOptions: {
-//      title: "Login"
-//    }
-//  }
-// );
-
-// const ProfileSwitch = createSwitchNavigator(
-//  {
-//    Loading: LoadingScreen,
-//    Account: AccountStack,
-//    Login: LoginStack
-//  },
-//  {
-//    initialRouteName: "Loading",
-//    defaultNavigationOptions: {
-//      title: "Loading"
-//    }
-//  }
-// );
-
 // const tabNavigator = createBottomTabNavigator(
 //   {
 //     //Home: HomeStack
 //     Search: SearchStack,
 //     EventsSearch: EventsSearchStack,
 //     Deals: DealsStack,
-//     Map: MapStack,
-//     Profile: ProfileSwitch
+//     Map: MapStack
 //   },
 //   {
 //     initialRouteName: "Search",
