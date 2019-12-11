@@ -1,7 +1,7 @@
 ---
 language: node_js
 node_js:
-  - lts/*
+  - 10.16.3
 cache:
   directories:
     - ~/.npm
@@ -9,5 +9,5 @@ cache:
 before_script:
   - npm install -g npm@6.11.3
 script:
-  - npm install
+  - npm ci
   - npx jest --ci --passWithNoTests
