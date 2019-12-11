@@ -8,9 +8,17 @@ import MapScreen from './MapScreen';
 import DealDetail from './DealDetail';
 import EventsResultsScreen from './EventsResultsScreen';
 import BusinessesShowScreen from './BusinessesShowScreen';
+import LoadingScreen from './LoadingScreen';
+import LoginScreen from './LoginScreen';
+import RegisterScreen from './RegisterScreen';
+import AccountScreen from './AccountScreen';
+import EditAccountScreen from './EditAccountScreen';
+import AddFriendsScreen from './AddFriendsScreen';
+import FriendsListScreen from './FriendsListScreen';
 // import Icon from 'react-native-ionicons'
 
 import { createStackNavigator } from "react-navigation-stack";
+import { createSwitchNavigator } from "react-navigation";
 
 const DealsStack = createStackNavigator(
     {
@@ -71,6 +79,48 @@ const SearchStack = createStackNavigator(
     }
   );
 
+const AccountStack = createStackNavigator(
+    {
+      Account: AccountScreen,
+      EditAccount: EditAccountScreen,
+      AddFriends: AddFriendsScreen,
+      FriendsList: FriendsListScreen
+    },
+    {
+      initialRouteName: "Account",
+      defaultNavigationOptions: {
+        title: "Profile"
+      }
+    }
+  );
+  
+const LoginStack = createStackNavigator(
+    {
+      Login: LoginScreen,
+      Register: RegisterScreen
+    },
+    {
+      initialRouteName: "Login",
+      defaultNavigationOptions: {
+        title: "Login"
+      }
+    }
+  );
+
+const ProfileSwitch = createSwitchNavigator(
+    {
+      Loading: LoadingScreen,
+      Account: AccountStack,
+      Login: LoginStack
+    },
+    {
+      initialRouteName: "Loading",
+      defaultNavigationOptions: {
+        title: "Loading"
+      }
+    }
+  );
+
 //below creates the Tab bar with the stacks and screens associated.
 
 export const TabScreen = createMaterialBottomTabNavigator({
@@ -110,6 +160,15 @@ export const TabScreen = createMaterialBottomTabNavigator({
                 <Ionicons name="md-map" color={tintColor} size={25} />
             )
         }
+    },
+    ProfileSwitch: {
+        screen: ProfileSwitch, 
+        navigationOptions: {
+            tabBarLabel: 'Profile', 
+            tabBarIcon: ({ tintColor }) => (
+              <Ionicons name="md-person" color={tintColor} size={25} />
+          )
+      }
     }
   }, {
    initialRouteName: 'SearchScreen',
