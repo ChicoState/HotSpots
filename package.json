@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --coverage --forceExit"
+    "test": "jest --coverage --forceExit -u"
   },
   "dependencies": {
     "axios": "^0.19.0",
