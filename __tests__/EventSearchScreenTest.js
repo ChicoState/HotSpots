@@ -5,14 +5,15 @@ import SearchScreen from '../src/screens/SearchScreen'
 import renderer from 'react-test-renderer';
 import act from 'react-test-renderer'
 import TestRenderer from 'react-test-renderer'
+import EventsSearchScreen from '../src/screens/EventsSearchScreen'
 
 
 describe( "render tests", () => {
     jest.useFakeTimers();
-    it('DealScreen Test', async done => {
+    it('Eventsearchscreen Test', async done => {
         var snap;  
        await TestRenderer.act(async () => {
-            snap = renderer.create(<DealScreen />);
+            snap = await renderer.create(<EventsSearchScreen />);
        });
        let tree = snap.toJSON;
        await expect(tree).toMatchSnapshot();
