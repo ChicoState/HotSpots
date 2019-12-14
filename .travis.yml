@@ -10,4 +10,6 @@ before_script:
   - npm install -g npm@latest
 script:
   - npm ci
-  - npm test
+  - npm test  
+after_success:
+  - coveralls --exclude __tests__/ --gcov-options '\-lpbc'
