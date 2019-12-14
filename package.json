@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --coverage --forceExit -u"
+    "test": "jest --forceExit -u --coverage --coverageReporters=text-lcov | coveralls"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -37,6 +37,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-preset-expo": "^7.1.0",
+    "coveralls": "^3.0.9",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",

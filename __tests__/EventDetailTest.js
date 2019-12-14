@@ -12,7 +12,7 @@ describe( "render tests", () => {
     it('DealScreen Test', async done => {
         var snap;  
        await TestRenderer.act(async () => {
-            snap = renderer.create(<EventDetails/>);
+            snap = renderer.create(<EventDetails />);
        });
        let tree = snap.toJSON;
        await expect(tree).toMatchSnapshot();
