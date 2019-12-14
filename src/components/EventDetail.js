@@ -11,4 +11,4 @@ const EventDetail = () => {
 
 const styles = StyleSheet.create({});
 
-export default Event;
+export default EventDetail;
