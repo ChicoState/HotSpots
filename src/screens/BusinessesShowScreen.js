@@ -74,11 +74,7 @@ const BusinessesShowScreen = function({ navigation }) {
     };
   }
 
-//   <TouchableOpacity onPress={this.dialCall} activeOpacity={0.7} style={styles.button} >
 
-//   <Text style={styles.TextStyle}>OPEN PHONE NUMBER IN DIAL SCREEN</Text>
-
-// </TouchableOpacity>
   return (
     <View>
       <Text style={styles.bigBlue}>{business.name}</Text>
@@ -95,8 +91,8 @@ const BusinessesShowScreen = function({ navigation }) {
       <View>
         <TouchableHighlight 
           activeOpacity = {.5} 
-          onPress={this.dialCall}>
-          <Text style={styles.button}>{business.handleGetDirections}Get Directions</Text>
+          onPress={this.handleGetDirections}>
+          <Text style={styles.button}>Get Directions</Text>
         </TouchableHighlight>
       </View>
       <View style = {{alignItems: "center", backgroundColor: 'black', padding: 0, height: 45}}>
@@ -105,19 +101,6 @@ const BusinessesShowScreen = function({ navigation }) {
           source={fingerpic}
         />
       </View>
-    
-
-      {/* <TouchableOpacity
-        style={styles.button}
-        onPress={this.handleGetDirections}
-      >
-        <Text style={styles.button}>Get Directions</Text>
-        <Image
-          source={fingerpic}
-          style={{ alignItems: "center", width: 40, height: 20 }}
-        />
-      </TouchableOpacity> */}
-      {/* <Button onPress={this.handleGetDirections} title="Get Directions" /> */}
       <FlatList
         style={styles.back}
         data={business.photos}

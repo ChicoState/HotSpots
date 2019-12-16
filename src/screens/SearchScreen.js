@@ -34,17 +34,11 @@ const SearchScreen = function() {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <ScrollView>
-        <BusinessesList
-          businesses={filterBusinessesByPrice("$")}
-          title="Music Venues"
-        />
-        <BusinessesList
-          businesses={filterBusinessesByPrice("$$")}
-          title="Drinking Venues"
-        />
+        <BusinessesList businesses={filterBusinessesByPrice("$")} title="$" />
+        <BusinessesList businesses={filterBusinessesByPrice("$$")} title="$$" />
         <BusinessesList
           businesses={filterBusinessesByPrice("$$$")}
-          title="Dining Venues"
+          title="$$$"
         />
       </ScrollView>
     </View>

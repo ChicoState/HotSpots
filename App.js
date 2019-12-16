@@ -1,6 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import {
-  createSwitchNavigtor,
+  //createSwitchNavigtor,
   createStackNavigator
 } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -14,83 +14,120 @@ import MapScreen from "./src/screens/MapScreen";
 import DealsScreen from "./src/screens/DealsScreen";
 import DealDetail from "./src/screens/DealDetail";
 console.disableYellowBox = true;
+import { TabScreen } from "./src/screens/TabScreen";
 
-const SearchStack = createStackNavigator(
-  {
-    Search: SearchScreen,
-    BusinessesShow: BusinessesShowScreen
-  },
-  {
-    initialRouteName: "Search",
-    defaultNavigationOptions: {
-      title: "HotSpots",
-      headerTitleStyle: {
-        flex: 1,
-        textAlign: "center",
-        color: "white"
-      },
-      headerStyle: {
-        backgroundColor: "black"
-      }
-    }
-  }
-);
+const AppStack = createStackNavigator({ TabScreen });
 
-const EventsSearchStack = createStackNavigator(
-  {
-    ["Events Search"]: EventsSearchScreen,
-    EventsResults: EventsResultsScreen
-  },
-  {
-    initialRouteName: "Events Search",
-    defaultNavigationOptions: {
-      title: "Events Search",
-      headerTitleStyle: {
-        flex: 1,
-        textAlign: "center"
-      }
-    }
-  }
-);
+/*
 
-const DealsStack = createStackNavigator(
-  {
-    Deals: DealsScreen,
-    Detail: DealDetail
-    // Map: MapScreen
-  },
-  {
-    initialRouteName: "Deals",
-    defaultNavigationOptions: {
-      title: "Daily Deals",
-      headerTitleStyle: {
-        flex: 1,
-        textAlign: "center",
-        color: "white"
-      },
-      headerStyle: {
-        backgroundColor: "black"
-      }
-    }
-  }
-);
+  TO REVERT TO OLD STYLE UNCOMMENT AND REPLACE TABSCREEN BELOW WITH 
+  tabNavigator in the export function.
 
-const tabNavigator = createBottomTabNavigator(
-  {
-    //Home: HomeStack
-    Search: SearchStack,
-    ["Events Search"]: EventsSearchStack,
-    Deals: DealsStack
-  },
-  {
-    initialRouteName: "Search",
-    color: "white",
-    tabBarOptions: {
-      activeBackgroundColor: "black",
-      inactiveBackgroundColor: "black",
-      activeTintColor: "white"
-    }
-  }
-);
 
-export default createAppContainer(tabNavigator);
+*/
+
+
+export default createAppContainer(TabScreen);
+
+
+//BELOW is all COMMENTED OUT
+
+
+
+
+
+
+
+
+// const SearchStack = createStackNavigator(
+//   {
+//     Search: SearchScreen,
+//     BusinessesShow: BusinessesShowScreen
+//   },
+//   {
+//     initialRouteName: "Search",
+//     defaultNavigationOptions: {
+//       title: "HotSpots",
+//       headerTitleStyle: {
+//         flex: 1,
+//         textAlign: "center",
+//         color: "white"
+//       },
+//       headerStyle: {
+//         backgroundColor: "black"
+//       }
+//     }
+//   }
+// );
+
+// const EventsSearchStack = createStackNavigator(
+//   {
+//     EventsSearch: EventsSearchScreen,
+//     EventsResults: EventsResultsScreen
+//   },
+//   {
+//     initialRouteName: "EventsSearch",
+//     defaultNavigationOptions: {
+//       title: "Events",
+//       headerTitleStyle: {
+//         flex: 1,
+//         textAlign: "center"
+//       }
+//     }
+//   }
+// );
+
+// const MapStack = createStackNavigator(
+//   {
+//     Map: MapScreen
+//   },
+//   {
+//     initialRouteName: "Map",
+//     defaultNavigationOptions: {
+//       title: "Map View"
+//     }
+//   }
+// );
+
+// const DealsStack = createStackNavigator(
+//   {
+//     Deals: DealsScreen,
+//     Detail: DealDetail
+//     // Map: MapScreen
+//   },
+//   {
+//     initialRouteName: "Deals",
+//     defaultNavigationOptions: {
+//       title: "Daily Deals",
+//       headerTitleStyle: {
+//         flex: 1,
+//         textAlign: "center",
+//         color: "white"
+//       },
+//       headerStyle: {
+//         backgroundColor: "black"
+//       }
+//     }
+//   }
+// );
+
+// const tabNavigator = createBottomTabNavigator(
+//   {
+//     //Home: HomeStack
+//     Search: SearchStack,
+//     EventsSearch: EventsSearchStack,
+//     Deals: DealsStack,
+//     Map: MapStack
+//   },
+//   {
+//     initialRouteName: "Search",
+//     color: "white",
+//     tabBarOptions: {
+//       activeBackgroundColor: "black",
+//       inactiveBackgroundColor: "black",
+//       activeTintColor: "white"
+//     }
+//   }
+// );
+
+
