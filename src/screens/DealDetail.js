@@ -33,28 +33,29 @@ const DealDetail = ({ navigation }) => {
       });
       settodaysdeals(Deals);
     });
-  }, []);
+  }, [id]);
 
-
-  return <View style={{ flex: 1, backgroundColor: "black" }}>
-  <Text style={styles.bigBlue}>{business_name}</Text>
-  <Text style={styles.bigBluesub}>{business_type}</Text>
-  <FlatList
-      data={todaysdeals}
-      renderItem={({ item }) => {
-        return (
-          <View style={styles.card}>
-            <Text style={styles.text}>{item.special_name}</Text>
-            <Text style={styles.textsub}>{item.deal_description}</Text>
-            <Text style={styles.textsub}>{item.time_start} to {item.time_end}</Text>
-        </View>
-        );
-      }}
-    ></FlatList>
-</View>
-
-}
-
+  return (
+    <View style={{ flex: 1, backgroundColor: "black" }}>
+      <Text style={styles.bigBlue}>{business_name}</Text>
+      <Text style={styles.bigBluesub}>{business_type}</Text>
+      <FlatList
+        data={todaysdeals}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.card}>
+              <Text style={styles.text}>{item.special_name}</Text>
+              <Text style={styles.textsub}>{item.deal_description}</Text>
+              <Text style={styles.textsub}>
+                {item.time_start} to {item.time_end}
+              </Text>
+            </View>
+          );
+        }}
+      ></FlatList>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   bigBlue: {
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
     backgroundColor: "black"
-  },  
+  },
   bigBluesub: {
     textAlign: "center",
     color: "white",
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   card: {
-    padding: 5,
+    padding: 5
   },
   text: {
     color: "white",
