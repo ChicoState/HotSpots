@@ -6,23 +6,26 @@ export default () => {
   const apiKey = "dxiyvALL8mwvOHP3o50IbBfIn28jGMe6";
 
   //Function to make request
-  const eventsApi = async searchTerm => {
-    //searchTerm === "Event to search for: string"
-    try {
-      console.log(searchTerm);
-      const response = await ticketMaster.get("events.json", {
-        params: {
-          keyword: searchTerm,
-          size: 20,
-          apikey: apiKey
-        }
-      });
-      //setEvents(response.data.)
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
+  const eventsApi = params => {
+    //searchTerm === "Event to search for: string"{
+    /*const params = {
+      size: 20,
+      apikey: apiKey,
+      keyword: "Borgore"
+    };*/
+    params.apikey = apiKey;
+    params.size = 1;
+    console.log("In Events API");
+    ticketMaster
+      .get("events.json", { params })
+      .then(response => {
+        setEvents(response.data._embedded.events);
+      })
+      .catch(err => console.log(err));
+    return events;
   };
+
+  useEffect(() => {}, []);
 
   return [eventsApi, events, setEvents];
 };

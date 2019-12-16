@@ -13,6 +13,7 @@ import EventsSearchScreen from "./src/screens/EventsSearchScreen";
 import MapScreen from "./src/screens/MapScreen";
 import DealsScreen from "./src/screens/DealsScreen";
 import DealDetail from "./src/screens/DealDetail";
+console.disableYellowBox = true;
 import { TabScreen } from "./src/screens/TabScreen";
 
 const AppStack = createStackNavigator({ TabScreen });
@@ -128,6 +129,5 @@ export default createAppContainer(TabScreen);
 //     }
 //   }
 // );
-
 
 
