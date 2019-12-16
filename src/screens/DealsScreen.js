@@ -70,7 +70,7 @@ const DealsScreen = ({navigation}) => {
         data={deals}
         renderItem={({ item }) => {
           return (
-            <View>
+            <View style={styles.text}>
                 <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
                     <Text style={styles.text}>{item.business_name}</Text>
                 </TouchableOpacity>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 25,
     alignItems: "center",
-    padding: 15,
+    padding: 10,
     backgroundColor: "black"
   }
 });
