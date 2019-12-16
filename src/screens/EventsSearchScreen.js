@@ -12,7 +12,8 @@ const EventsSearchScreen = ({ navigation }) => {
     if (city) setParams((params.city = city));
     if (date) setParams((params.date = date));
     var parameters = {
-      keyword: searchTerm,
+      //keyword: searchTerm,
+      keyword: "Dillon Francis",
       city: city,
       startDate: date
     };
