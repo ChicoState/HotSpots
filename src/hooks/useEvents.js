@@ -25,5 +25,7 @@ export default () => {
     return events;
   };
 
+  useEffect(() => {}, []);
+
   return [eventsApi, events, setEvents];
 };
