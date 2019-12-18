@@ -13,11 +13,9 @@ import {
 } from "react-native";
 import yelp from "../api/yelp";
 import { Linking } from "expo";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 // import * as from "./images";
-
-
 
 var fingerpic = require("../images/fingerPoint.png");
 
@@ -49,12 +47,12 @@ const BusinessesShowScreen = function({ navigation }) {
       const scheme = Platform.select({
         ios: "tel:",
         android: "telprompt:"
-      })
+      });
       const phoneNumberBus = `${business.display_phone}`;
       const phoneNumber = Platform.select({
         ios: `${scheme}${phoneNumberBus}`,
         android: `${scheme}${phoneNumberBus}`
-      })
+      });
       Linking.openURL(phoneNumber);
     };
 
@@ -74,30 +72,35 @@ const BusinessesShowScreen = function({ navigation }) {
     };
   }
 
-
   return (
     <View>
       <Text style={styles.bigBlue}>{business.name}</Text>
       <View>
-        <TouchableHighlight 
-          activeOpacity = {.5} 
-          onPress={this.dialCall}>
+        <TouchableHighlight activeOpacity={0.5} onPress={this.dialCall}>
           <Text style={styles.phoneButton}>{business.display_phone}</Text>
         </TouchableHighlight>
       </View>
       <Text style={styles.back}>Rating: {business.rating} </Text>
       <Text style={styles.back}>Price: {business.price} </Text>
-      <Text style={styles.back}>Total Reviews: {business.review_count} </Text> 
+      <Text style={styles.back}>Total Reviews: {business.review_count} </Text>
       <View>
-        <TouchableHighlight 
-          activeOpacity = {.5} 
-          onPress={this.handleGetDirections}>
+        <TouchableHighlight
+          activeOpacity={0.5}
+          onPress={this.handleGetDirections}
+        >
           <Text style={styles.button}>Get Directions</Text>
         </TouchableHighlight>
       </View>
-      <View style = {{alignItems: "center", backgroundColor: 'black', padding: 0, height: 45}}>
+      <View
+        style={{
+          alignItems: "center",
+          backgroundColor: "black",
+          padding: 0,
+          height: 45
+        }}
+      >
         <Image
-          style={{ position: 'absolute', width: 40, height: 25 }}
+          style={{ position: "absolute", width: 40, height: 25 }}
           source={fingerpic}
         />
       </View>
@@ -130,7 +133,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "white",
     textAlign: "left"
-    
   },
   imageS: {
     flex: 2,
@@ -149,11 +151,11 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   phoneButton: {
-    color: '#3255C7',
+    color: "#3255C7",
     fontWeight: "bold",
     fontSize: 15,
-    backgroundColor: 'black',
-    padding: 5  //places it in off center from other text
+    backgroundColor: "black",
+    padding: 5 //places it in off center from other text
   }
 });
 

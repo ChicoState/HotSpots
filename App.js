@@ -25,18 +25,9 @@ const AppStack = createStackNavigator({ TabScreen });
 
 */
 
-
 export default createAppContainer(TabScreen);
 
-
 //BELOW is all COMMENTED OUT
-
-
-
-
-
-
-
 
 // const SearchStack = createStackNavigator(
 //   {
@@ -128,6 +119,3 @@ export default createAppContainer(TabScreen);
 //     }
 //   }
 // );
-
-
-

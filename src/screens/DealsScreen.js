@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList,TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity
+} from "react-native";
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 import firebase from "firebase/app";
@@ -8,7 +14,7 @@ import "firebase/firestore";
 import { YellowBox } from "react-native";
 import _ from "lodash";
 
-const DealsScreen = ({navigation}) => {
+const DealsScreen = ({ navigation }) => {
   const [deals, setDeals] = useState([]);
 
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -63,7 +69,7 @@ const DealsScreen = ({navigation}) => {
   }, []);
 
   return (
-    <View  style={{ flex: 1, backgroundColor: "black" }}>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       <Text style={styles.bigBlue}>Businesses with deals today!</Text>
       <FlatList
         style={styles.back}
@@ -71,10 +77,18 @@ const DealsScreen = ({navigation}) => {
         renderItem={({ item }) => {
           return (
             <View style={styles.text}>
-                <TouchableOpacity  onPress = {() => navigation.navigate('Detail', {id: item.key, business_name: item.business_name, business_type: item.business_type})}>
-                    <Text style={styles.text}>{item.business_name}</Text>
-                </TouchableOpacity>
-          </View>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("Detail", {
+                    id: item.key,
+                    business_name: item.business_name,
+                    business_type: item.business_type
+                  })
+                }
+              >
+                <Text style={styles.text}>{item.business_name}</Text>
+              </TouchableOpacity>
+            </View>
           );
         }}
       ></FlatList>
