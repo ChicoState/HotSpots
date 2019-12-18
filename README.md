@@ -10,3 +10,4 @@ A different branch was created for the profile feature due to bugs. Look at the 
 
 # Ticket Master Dev
 The development that I put into the ticketMaster implementation is in a separate branch called ticketMaster. I ran into many issues when dealing with the JSON object that is sent back from the Ticket Master API.
+-Tony Buranzon
